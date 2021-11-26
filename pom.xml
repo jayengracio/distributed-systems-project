@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>runescape</module>
-        <module>game2</module>
+        <module>cyberpunk</module>
         <module>game3</module>
     </modules>
 
