@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>core</module>
         <module>runescape</module>
         <module>cyberpunk</module>
         <module>game3</module>
