@@ -11,4 +11,8 @@ public class Item implements Serializable {
         this.grade = grade;
         this.name = name;
     }
+
+    public Item(String type) {
+        this.type = type;
+    }
 }

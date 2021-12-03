@@ -7,13 +7,18 @@ import static org.junit.Assert.assertNotNull;
 public class CyberpunkTest {
     @Test
     public void generateStats() throws Exception {
-        Item item = new Item("Gun", 'C', "AGun");
+        Item item = new Item("Melee");
         GameService service = new Cyberpunk();
-        Stats stats = service.generateStats(item);
-        assertEquals("AGun", item.name);
-        System.out.println("Type: " + stats.damageType);
-        System.out.println("Damage: " + stats.damage);
-        System.out.println("Durability: " + stats.durability);
-        assertNotNull(stats);
+        Game game = service.generateGame(item);
+        System.out.println("Item Name: " + item.name);
+        System.out.println("Game Company: " + game.name);
+        System.out.println("Game Reference: " + game.reference);
+        System.out.println("Grade: " + item.grade);
+        System.out.println("Type: " + game.stats.damageType);
+        System.out.println("Damage: " + game.stats.damage);
+        System.out.println("Durability: " + game.stats.durability);
+        assertNotNull(game.stats);
+        assertEquals("Cyberpunk 2077", game.name);
+        assertEquals("CP2077", game.reference);
     }
 }

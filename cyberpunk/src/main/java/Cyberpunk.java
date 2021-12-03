@@ -1,4 +1,5 @@
 import service.core.AbstractGameService;
+import service.core.Game;
 import service.core.Item;
 import service.core.Stats;
 
@@ -11,35 +12,56 @@ public class Cyberpunk extends AbstractGameService {
     public static final String GAME = "Cyberpunk 2077";
 
     @Override
-    public Stats generateStats(Item item) {
+    public Game generateGame(Item item) {
         Stats stats = new Stats();
         stats.durability = generateDurability();
         stats.damageType = generateDamageType();
+        List<String> weapons;
 
         switch (item.type) {
             case "Gun":
+                weapons = Arrays.asList("D5 Copperhead", "D5 Sidewinder", "HJSH-18 Masamune", "M2515 Ajax", "Nowaki");
+                item.name = generateName(weapons);
                 stats.damage = generateDamage(15, 50);
                 break;
+            case "Melee":
             case "Sword":
+                weapons = Arrays.asList("Baseball Bat", "Knife", "Katana", "Jinchi-Maru", "Gold-plated Baseball Bat");
+                item.name = generateName(weapons);
                 stats.damage = generateDamage(60, 90);
                 break;
-            case "Axe":
+            case "Cyberware":
+                weapons = Arrays.asList("Gorilla Arms", "Mantis Blades", "Monowire", "Projectile Launch System");
+                item.name = generateName(weapons);
                 stats.damage = generateDamage(75, 102);
                 break;
             default:
-                break;
+                System.out.println("Item type does not exist for this service.");
+                return new Game(PREFIX, GAME, null);
         }
 
+        if (item.grade == '\0')
+            item.grade = generateGrade();
+
+        if (item.name == null)
+            item.name = generateName(weapons);
+
         stats.damage = modifyDamageByGrade(item.grade, stats.damage);
-        return stats;
+        return new Game(PREFIX, GAME, stats);
     }
 
     private double generateDamage(double min, double max) {
-        return (int) Math.floor(Math.random() * (max - min + 1) + min);
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     private double generateDurability() {
-        return (int) Math.floor(Math.random() * (100 + 1) + 0);
+        return Math.floor(Math.random() * (100 + 1) + 0);
+    }
+
+    private char generateGrade() {
+        Random rand = new Random();
+        List<Character> grades = Arrays.asList('A', 'B', 'C', 'D', 'F', 'S');
+        return grades.get(rand.nextInt(grades.size()));
     }
 
     private String generateDamageType() {
@@ -48,21 +70,29 @@ public class Cyberpunk extends AbstractGameService {
         return damageTypes.get(rand.nextInt(damageTypes.size()));
     }
 
+    private String generateName(List<String> weapons) {
+        Random rand = new Random();
+        return weapons.get(rand.nextInt(weapons.size()));
+    }
+
     private double modifyDamageByGrade(char grade, double damage) {
-        System.out.println("Before Modifier: " + damage);
+        //System.out.println("Before Modifier: " + damage);
         double modified = 0;
         switch (grade) {
             case 'S':
-                modified = damage * 0.18;
-                break;
-            case 'B':
                 modified = damage * 0.1;
                 break;
+            case 'B':
+                modified = damage * 0.07;
+                break;
             case 'C':
-                modified = damage * 0.2;
+                modified = damage * 0.09;
                 break;
             case 'D':
-                modified = damage * 0.3;
+                modified = damage * 0.11;
+                break;
+            case 'F':
+                modified = damage * 0.13;
                 break;
             default:
                 break;
