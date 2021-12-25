@@ -13,4 +13,28 @@ public class Stats implements Serializable {
     }
 
     public Stats() {}
+
+    public double getDamage() {
+        return damage;
+    }
+
+    public double getDurability() {
+        return durability;
+    }
+
+    public String getDamageType() {
+        return damageType;
+    }
+
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public void setDamageType(String damageType) {
+        this.damageType = damageType;
+    }
+
+    public void setDurability(double durability) {
+        this.durability = durability;
+    }
 }

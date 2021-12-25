@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class GameResponseMessage implements  Serializable {
     public long id;
-    public Game game;
+    public GameItem gameItem;
 
-    public GameResponseMessage(long id, Game game) {
+    public GameResponseMessage(long id, GameItem game) {
         this.id = id;
-        this.game = game;
+        this.gameItem = game;
     }
 }

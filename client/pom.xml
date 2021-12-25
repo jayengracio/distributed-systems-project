@@ -9,25 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>runescape</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>client</artifactId>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <main.class>Receiver</main.class>
+        <main.class>Main</main.class>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-core</artifactId>
-            <version>5.7.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.internetexplorers</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.7.0</version>
         </dependency>
 
         <!-- logging dependencies -->
@@ -50,7 +49,6 @@
             <version>1.6.6</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <!-- Plugin used to run Java programs -->

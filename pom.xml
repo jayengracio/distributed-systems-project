@@ -13,6 +13,8 @@
         <module>runescape</module>
         <module>cyberpunk</module>
         <module>game3</module>
+        <module>client</module>
+        <module>broker</module>
     </modules>
 
 </project>

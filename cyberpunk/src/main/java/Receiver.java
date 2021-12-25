@@ -20,8 +20,8 @@ public class Receiver {
             Connection connection = factory.createConnection();
             connection.setClientID("cyberpunk");
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-            Queue queue = session.createQueue("GAMES");
-            Topic topic = session.createTopic("ITEMS");
+            Queue queue = session.createQueue("ITEMS");
+            Topic topic = session.createTopic("GAMES");
             MessageConsumer consumer = session.createConsumer(topic);
             MessageProducer producer = session.createProducer(queue);
 
@@ -37,7 +37,7 @@ public class Receiver {
                         // It’s a Stats Request Message
                         GameRequestMessage request = (GameRequestMessage) content;
                         // Generate stats of an item and send a game response message…
-                        Game game = service.generateGame(request.item);
+                        GameItem game = service.generateGameItem(request.item);
                         Message response = session
                                 .createObjectMessage(new GameResponseMessage(request.id, game));
                         producer.send(response);

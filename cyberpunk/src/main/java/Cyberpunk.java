@@ -1,7 +1,4 @@
-import service.core.AbstractGameService;
-import service.core.Game;
-import service.core.Item;
-import service.core.Stats;
+import service.core.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +9,7 @@ public class Cyberpunk extends AbstractGameService {
     public static final String GAME = "Cyberpunk 2077";
 
     @Override
-    public Game generateGame(Item item) {
+    public GameItem generateGameItem(Item item) {
         Stats stats = new Stats();
         stats.durability = generateDurability();
         stats.damageType = generateDamageType();
@@ -37,7 +34,7 @@ public class Cyberpunk extends AbstractGameService {
                 break;
             default:
                 System.out.println("Item type does not exist for this service.");
-                return new Game(PREFIX, GAME, null);
+                return new GameItem(PREFIX, GAME, null);
         }
 
         if (item.grade == '\0')
@@ -47,7 +44,7 @@ public class Cyberpunk extends AbstractGameService {
             item.name = generateName(weapons);
 
         stats.damage = modifyDamageByGrade(item.grade, stats.damage);
-        return new Game(PREFIX, GAME, stats);
+        return new GameItem(PREFIX, GAME, stats);
     }
 
     private double generateDamage(double min, double max) {

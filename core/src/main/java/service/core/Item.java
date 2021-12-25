@@ -15,4 +15,20 @@ public class Item implements Serializable {
     public Item(String type) {
         this.type = type;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public char getGrade() {
+        return grade;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setGrade(char grade) {
+        this.grade = grade;
+    }
 }
