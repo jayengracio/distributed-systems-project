@@ -9,13 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>game3</artifactId>
+    <artifactId>zelda</artifactId>
     <packaging>jar</packaging>
-
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <main.class>Game</main.class>
+        <main.class>Receiver</main.class>
     </properties>
 
     <dependencies>
@@ -25,9 +24,29 @@
             <version>5.7.0</version>
         </dependency>
         <dependency>
-            <groupId>lab4</groupId>
+            <groupId>com.internetexplorers</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1</version>
+        </dependency>
+
+        <!-- logging dependencies -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <exclusions>
+                <exclusion>
+                    <!-- Defined below -->
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.6</version>
         </dependency>
     </dependencies>
 

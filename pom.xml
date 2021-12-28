@@ -12,7 +12,7 @@
         <module>core</module>
         <module>runescape</module>
         <module>cyberpunk</module>
-        <module>game3</module>
+        <module>zelda</module>
         <module>client</module>
         <module>broker</module>
     </modules>
