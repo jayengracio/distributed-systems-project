@@ -12,6 +12,8 @@ public class GameItem implements Serializable {
         this.stats = stats;
     }
 
+    public GameItem() {}
+
     public String getGameReference() {
         return gameReference;
     }
@@ -22,5 +24,26 @@ public class GameItem implements Serializable {
 
     public Stats getStats() {
         return stats;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGameReference(String gameReference) {
+        this.gameReference = gameReference;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    @Override
+    public String toString() {
+        return "GameItem{" +
+                "gameReference='" + gameReference + '\'' +
+                ", name='" + name + '\'' +
+                ", stats=" + stats +
+                '}';
     }
 }

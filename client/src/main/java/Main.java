@@ -1,15 +1,9 @@
-import java.text.NumberFormat;
-import java.util.Map;
-import java.util.HashMap;
-
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
-import javax.jms.TextMessage;
-import javax.jms.Topic;
 import javax.jms.Queue;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
@@ -53,8 +47,6 @@ public class Main implements Runnable{
                 Message request = session.createObjectMessage(item);
                 requestProducer.send(request);
             }
-
-            // connection.close();
         } catch (JMSException e) {
             e.printStackTrace();
         }

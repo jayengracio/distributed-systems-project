@@ -16,6 +16,8 @@ public class Item implements Serializable {
         this.type = type;
     }
 
+    public Item() {}
+
     public String getName() {
         return name;
     }
@@ -30,5 +32,13 @@ public class Item implements Serializable {
 
     public void setGrade(char grade) {
         this.grade = grade;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

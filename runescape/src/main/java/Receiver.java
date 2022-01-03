@@ -40,15 +40,17 @@ public class Receiver {
                         GameRequestMessage request = (GameRequestMessage) content;
                         // Generate a quotation and send a quotation response message…
                         GameItem gameItem = game.generateGameItem(request.item);
-                        Message response = session.createObjectMessage(
-                                new GameResponseMessage(request.id, gameItem)
-                        );
-                        producer.send(response);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
+                        if (gameItem != null) {
+                            Message response = session.createObjectMessage(
+                                    new GameResponseMessage(request.id, gameItem)
+                            );
+                            producer.send(response);
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         }
                     }
                 } else {

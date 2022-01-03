@@ -27,7 +27,7 @@ public class Zelda extends AbstractGameService{
                 break;
             default:
                 System.out.println("Item type does not exist for this game.");
-                return new GameItem(PREFIX, GAME, null);
+                return null;
         }
 
         if (item.getGrade() == '\0')
