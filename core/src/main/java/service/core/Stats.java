@@ -37,4 +37,13 @@ public class Stats implements Serializable {
     public void setDurability(double durability) {
         this.durability = durability;
     }
+
+    @Override
+    public String toString() {
+        return "Stats{" +
+                "damage=" + damage +
+                ", damageType='" + damageType + '\'' +
+                ", durability=" + durability +
+                '}';
+    }
 }

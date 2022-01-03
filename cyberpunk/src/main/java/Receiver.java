@@ -37,10 +37,19 @@ public class Receiver {
                         // It’s a Stats Request Message
                         GameRequestMessage request = (GameRequestMessage) content;
                         // Generate stats of an item and send a game response message…
-                        GameItem game = service.generateGameItem(request.item);
-                        Message response = session
-                                .createObjectMessage(new GameResponseMessage(request.id, game));
-                        producer.send(response);
+                        GameItem gameItem = service.generateGameItem(request.item);
+                        if (gameItem != null) {
+                            Message response = session.createObjectMessage(
+                                    new GameResponseMessage(request.id, gameItem)
+                            );
+                            producer.send(response);
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 } else {
                     System.out.println("Unknown message type: " + message.getClass().getCanonicalName());

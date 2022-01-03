@@ -34,7 +34,7 @@ public class Cyberpunk extends AbstractGameService {
                 break;
             default:
                 System.out.println("Item type does not exist for this service.");
-                return new GameItem(PREFIX, GAME, null);
+                return null;
         }
 
         if (item.grade == '\0')

@@ -37,4 +37,13 @@ public class GameItem implements Serializable {
     public void setStats(Stats stats) {
         this.stats = stats;
     }
+
+    @Override
+    public String toString() {
+        return "GameItem{" +
+                "gameReference='" + gameReference + '\'' +
+                ", name='" + name + '\'' +
+                ", stats=" + stats +
+                '}';
+    }
 }

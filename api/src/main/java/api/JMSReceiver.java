@@ -17,6 +17,7 @@ public class JMSReceiver {
         BufferedWriter writer = new BufferedWriter(new FileWriter(itemsFileName, true));
         for (GameItem item : response.getItems()) {
             Stats stats = item.getStats();
+            System.out.println(item);
             String formattedItem = String.format("%s,%s,%s,%s,%s\n", item.getGameReference(), item.getName(), stats.getDamage(), stats.getDamageType(), stats.getDurability());
             writer.append(formattedItem);
         }

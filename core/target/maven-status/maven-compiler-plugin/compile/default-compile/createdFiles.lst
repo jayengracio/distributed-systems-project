@@ -1,8 +1,0 @@
-service/core/GameRequestMessage.class
-service/core/Item.class
-service/core/ClientApplicationMessage.class
-service/core/GameService.class
-service/core/GameResponseMessage.class
-service/core/Stats.class
-service/core/GameItem.class
-service/core/AbstractGameService.class
