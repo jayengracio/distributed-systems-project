@@ -1,4 +1,7 @@
-import service.core.*;
+import service.core.AbstractGameService;
+import service.core.GameItem;
+import service.core.Item;
+import service.core.Stats;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,23 +16,16 @@ public class Cyberpunk extends AbstractGameService {
         Stats stats = new Stats();
         stats.durability = generateDurability();
         stats.damageType = generateDamageType();
-        List<String> weapons;
 
         switch (item.type) {
             case "Gun":
-                weapons = Arrays.asList("D5 Copperhead", "D5 Sidewinder", "HJSH-18 Masamune", "M2515 Ajax", "Nowaki");
-                item.name = generateName(weapons);
                 stats.damage = generateDamage(15, 50);
                 break;
             case "Melee":
             case "Sword":
-                weapons = Arrays.asList("Baseball Bat", "Knife", "Katana", "Jinchi-Maru", "Gold-plated Baseball Bat");
-                item.name = generateName(weapons);
                 stats.damage = generateDamage(60, 90);
                 break;
             case "Cyberware":
-                weapons = Arrays.asList("Gorilla Arms", "Mantis Blades", "Monowire", "Projectile Launch System");
-                item.name = generateName(weapons);
                 stats.damage = generateDamage(75, 102);
                 break;
             default:
@@ -39,9 +35,6 @@ public class Cyberpunk extends AbstractGameService {
 
         if (item.grade == '\0')
             item.grade = generateGrade();
-
-        if (item.name == null)
-            item.name = generateName(weapons);
 
         stats.damage = modifyDamageByGrade(item.grade, stats.damage);
         return new GameItem(PREFIX, GAME, stats);
@@ -67,13 +60,7 @@ public class Cyberpunk extends AbstractGameService {
         return damageTypes.get(rand.nextInt(damageTypes.size()));
     }
 
-    private String generateName(List<String> weapons) {
-        Random rand = new Random();
-        return weapons.get(rand.nextInt(weapons.size()));
-    }
-
     private double modifyDamageByGrade(char grade, double damage) {
-        //System.out.println("Before Modifier: " + damage);
         double modified = 0;
         switch (grade) {
             case 'S':
