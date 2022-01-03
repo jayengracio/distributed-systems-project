@@ -13,4 +13,30 @@ public class ClientApplicationMessage implements Serializable {
         this.baseItem = baseItem;
         this.items = items;
     }
+
+    public ClientApplicationMessage() {}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Item getBaseItem() {
+        return baseItem;
+    }
+
+    public void setBaseItem(Item baseItem) {
+        this.baseItem = baseItem;
+    }
+
+    public List<GameItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<GameItem> items) {
+        this.items = items;
+    }
 }

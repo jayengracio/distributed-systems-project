@@ -15,6 +15,7 @@
         <module>zelda</module>
         <module>client</module>
         <module>broker</module>
+        <module>api</module>
     </modules>
 
 </project>
