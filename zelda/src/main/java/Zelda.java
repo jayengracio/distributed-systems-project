@@ -34,7 +34,7 @@ public class Zelda extends AbstractGameService{
             item.setGrade(generateGrade());
 
         stats.setDamage(modifyDamageByGrade(item.grade, stats.getDamage()));
-        return new GameItem(PREFIX, GAME, stats);
+        return new GameItem(PREFIX, item.getName(), stats);
     }
 
     private char generateGrade() {

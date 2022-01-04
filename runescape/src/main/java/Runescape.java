@@ -31,7 +31,7 @@ public class Runescape extends AbstractGameService {
             item.setGrade(generateGrade());
 
         stats.setDamage(modifyDamageByGrade(item.grade, stats.getDamage()));
-        return new GameItem(PREFIX, GAME, stats);
+        return new GameItem(PREFIX, item.getName(), stats);
     }
 
     private double generateDamage(double min, double max) {

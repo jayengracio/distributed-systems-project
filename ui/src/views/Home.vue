@@ -11,7 +11,7 @@
               <v-chip color="success" x-small class="mx-1">Zelda: Breath of the Wild</v-chip>
             </v-col>
             <v-col>
-              <v-btn depressed color="primary" small>Create Item</v-btn>
+              <v-btn depressed color="primary" small @click="createItemModal = true">Create Item</v-btn>
             </v-col>
           </v-row>
         </v-col>

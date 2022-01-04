@@ -37,7 +37,7 @@ public class Cyberpunk extends AbstractGameService {
             item.grade = generateGrade();
 
         stats.damage = modifyDamageByGrade(item.grade, stats.damage);
-        return new GameItem(PREFIX, GAME, stats);
+        return new GameItem(PREFIX, item.getName(), stats);
     }
 
     private double generateDamage(double min, double max) {
