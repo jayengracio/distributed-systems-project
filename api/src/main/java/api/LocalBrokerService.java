@@ -18,12 +18,9 @@ import javax.jms.Queue;
 import javax.jms.Message;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import service.core.*;
@@ -34,6 +31,7 @@ public class LocalBrokerService {
     static Connection connection;
     static Item baseItem;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value="/items", method=RequestMethod.GET)
     public ResponseEntity<List<GameItem>> fetchItems() throws URISyntaxException {
         File f = new File(String.format("%s/items.csv", System.getProperty("user.home")));
@@ -69,6 +67,7 @@ public class LocalBrokerService {
         return new ResponseEntity<>(items, headers, HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value="/items", method=RequestMethod.POST, consumes="application/json", produces="application/json")
     public ResponseEntity<String> createItem(@RequestBody Item item) throws URISyntaxException {
         baseItem = item;
