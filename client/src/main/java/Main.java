@@ -1,13 +1,6 @@
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
-import javax.jms.MessageProducer;
-import javax.jms.MessageConsumer;
-import javax.jms.Session;
-import javax.jms.Queue;
-import javax.jms.Message;
-import javax.jms.ObjectMessage;
+import javax.jms.*;
 
+import com.google.gson.Gson;
 import service.core.*;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -60,8 +53,13 @@ public class Main implements Runnable{
             MessageConsumer consumer = session.createConsumer(responsesQueue);
             while (true) {
                 Message message = consumer.receive();
-                if (message instanceof ObjectMessage) {
-                    Object content = ((ObjectMessage) message).getObject();
+                System.out.println(1);
+                System.out.println(message);
+                System.out.println(message.getClass().getCanonicalName());
+                if (message instanceof TextMessage) {
+                    System.out.println(2);
+                    Gson gson = new Gson();
+                    Object content = gson.fromJson(((TextMessage) message).getText(), ClientApplicationMessage.class);
                     if (content instanceof ClientApplicationMessage) {
                         ClientApplicationMessage response = (ClientApplicationMessage) content;
                         displayBaseItem(response.baseItem);
