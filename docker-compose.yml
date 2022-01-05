@@ -1,0 +1,50 @@
+version: '3'
+services:
+  activemq:
+    image: rmohr/activemq:latest
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+  cyberpunk:
+    build: cyberpunk
+    environment:
+      HOST: activemq
+    depends_on:
+      - activemq
+  runescape:
+    build: runescape
+    environment:
+      HOST: activemq
+    depends_on:
+      - activemq
+  zelda:
+    build: zelda
+    environment:
+      HOST: activemq
+    depends_on:
+      - activemq
+  broker:
+    build: broker
+    environment:
+      HOST: activemq
+    ports:
+      - "9000:9000"
+    expose:
+      - 9000
+    depends_on:
+      - runescape
+      - cyberpunk
+      - zelda
+  client:
+    depends_on:
+      - broker
+    build: client
+    environment:
+      HOST: activemq
+  api:
+    build: api
+    ports:
+      - "8083:8083"
+    expose:
+      - 8083
+    network_mode: "host"

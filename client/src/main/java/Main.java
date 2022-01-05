@@ -53,11 +53,7 @@ public class Main implements Runnable{
             MessageConsumer consumer = session.createConsumer(responsesQueue);
             while (true) {
                 Message message = consumer.receive();
-                System.out.println(1);
-                System.out.println(message);
-                System.out.println(message.getClass().getCanonicalName());
                 if (message instanceof TextMessage) {
-                    System.out.println(2);
                     Gson gson = new Gson();
                     Object content = gson.fromJson(((TextMessage) message).getText(), ClientApplicationMessage.class);
                     if (content instanceof ClientApplicationMessage) {

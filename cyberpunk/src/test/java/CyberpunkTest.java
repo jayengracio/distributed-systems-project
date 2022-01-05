@@ -11,7 +11,6 @@ public class CyberpunkTest {
         GameService service = new Cyberpunk();
         GameItem gameItem = service.generateGameItem(item);
         assertNotNull(gameItem.stats);
-        assertEquals("Cyberpunk 2077", gameItem.name);
         assertEquals("CP2077", gameItem.gameReference);
     }
 }
